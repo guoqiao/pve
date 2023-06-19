@@ -4,20 +4,21 @@ set -xue
 
 cd /etc/apt/sources.list.d/
 
-[ -f pve-enterprise.list ] && mv pve-enterprise.list pve-enterprise.list.save
+[ -f pve-enterprise.list ] && sudo mv pve-enterprise.list pve-enterprise.list.save
 
-echo "deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription" > pve-no-subscription.list
+echo "deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription" | sudo tee pve-no-subscription.list
 cat pve-no-subscription.list
 
-apt update
-apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
-apt install -y \
+sudo apt install -y \
 	ssh-import-id \
 	git \
 	vim \
 	curl \
 	htop \
+	s-tui \
 	sudo \
 	tree \
 	wget \
